@@ -566,6 +566,12 @@ class Compiler {
                         this.p(ti(d1));
                         this.p(ti(d2));
                     }
+                    else if(!r(d1) && r(d2)) {
+                        this.p(is[d.toLowerCase()+'rlr'])
+                        this.p(ti(de));
+                        this.p(ti(d1));
+                        this.p(ti(d2));
+                    }
                 } else {
                     if(r(d1) && r(d2)) {
                         this.p(is[d.toLowerCase()+'lrr']);
@@ -575,6 +581,12 @@ class Compiler {
                     }
                     else if(r(d1) && !r(d2)) {
                         this.p(is[d.toLowerCase()+'lrl'])
+                        this.p(ti(de));
+                        this.p(ti(d1));
+                        this.p(ti(d2));
+                    }
+                    else if(!r(d1) && r(d2)) {
+                        this.p(is[d.toLowerCase()+'llr'])
                         this.p(ti(de));
                         this.p(ti(d1));
                         this.p(ti(d2));
