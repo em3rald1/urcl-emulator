@@ -3,9 +3,9 @@
 ### URCL Emulator
 #### URCL Emulator
 ##### URCL Emulator
-Compile emulator:
-`$ g++ urcl-emu.cpp -o u2`
-Run emulator:
+Compile emulator:<br>
+`$ g++ urcl-emu.cpp -o u2`<br>
+Run emulator:<br>
 `$ u2 -r <compiled code>`<br>
 URCL Emulator made in C++ and Assembler made in Node.JS
 I hope it works fine
