@@ -267,6 +267,12 @@ class Compiler {
         }
         this.output = o.slice(i).reverse();
     }
+    include(fileName) {
+        if(fs.existsSync(fileName)) {
+            let data = fs.readFileSync(fileName, 'utf-8');
+            this.tokens = this.tokens.concat(utilizeAssembly(split(data)));
+        }
+    }
     pm() {
         for(let macro in this.macro_vars) {
             if(this.macro_vars[macro].startsWith('.')) {
@@ -298,7 +304,10 @@ class Compiler {
         while(true) {
             let d = this.f();
             if(!d) break;
-            if(d == 'MOV') {
+            if(d == 'INCLUDE') {
+                this.include(this.f().slice(1,-1));
+            }
+            else if(d == 'MOV') {
                 let de = this.f();
                 let d1 = this.f();
                 if(r(de) && r(d1)) {
