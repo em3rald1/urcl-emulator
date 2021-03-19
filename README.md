@@ -6,7 +6,7 @@
 Compile emulator:
 `$ g++ urcl-emu.cpp -o u2`
 Run emulator:
-`$ u2 -r <compiled code>`
+`$ u2 -r <compiled code>`<br>
 URCL Emulator made in C++ and Assembler made in Node.JS
 I hope it works fine
 
