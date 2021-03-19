@@ -176,7 +176,6 @@ const utilizeAssembly = (tokens) => {
             nd.push('"'+cs.slice(1)+'"');
         }
         else if(tokens[i] == '\'') {
-            console.log([tokens[i]], [tokens[i+1]], [tokens[i+2]]);
             if(tokens[i+1] == '\'') {
                 nd.push('\' \'');
                 i += 2;
@@ -230,7 +229,7 @@ const ti = s => {
     else if(s.startsWith('\'') && s.endsWith('\'')) return s.charCodeAt(1);
     else if(s.startsWith('R') || s.startsWith('%')) return Number(s.slice(1))-1;
     else return Number(s);
-    } catch(e) {console.log(s)}
+    } catch(e) {}
 }
 
 class Compiler {
@@ -269,7 +268,6 @@ class Compiler {
     }
     pm() {
         for(let macro in this.macro_vars) {
-            console.log(macro)
             if(this.macro_vars[macro].startsWith('.')) {
                 this.macro_vars[macro] = this.labels[this.macro_vars[macro].slice(1)].toString();
             }
@@ -542,7 +540,6 @@ class Compiler {
             }
             
             else if(d.startsWith('B') && (Object.keys(is).includes(d.toLowerCase()+'r'))) {
-                console.log('e')
                 let de = this.f();
                 if(r(de)) {
                     this.p(is[d.toLowerCase()+'r']);
@@ -681,6 +678,4 @@ function toLE(o) {
 
 let data = new Compiler(utilizeAssembly(split(fs.readFileSync(process.argv[2], 'utf-8'))));
 let data2 = Buffer.from(toLE(data.c()));
-console.log(data2);
 fs.writeFileSync(process.argv[3], data2);
-console.log(data)
