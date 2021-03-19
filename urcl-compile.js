@@ -1,3 +1,4 @@
+const { throws } = require('assert');
 const fs = require('fs');
 
 const is = {
@@ -589,6 +590,64 @@ class Compiler {
                     }
                 } else if(d2.startsWith("'") && d2.startsWith("'")) this.p(d2.charCodeAt(1));
                 else {
+                    this.p(ti(d2));
+                }
+            }
+            else if(d == 'MLT') {
+                let de = this.f();
+                let d1 = this.f();
+                let d2 = this.f();
+                if(r(d1) && r(d2)) {
+                    this.p(is.mltrr);
+                    this.p(ti(de));
+                    this.p(ti(d1));
+                    this.p(ti(d2));
+                } else if(r(d1) && !r(d2)) {
+                    this.p(is.mltlr);
+                    this.p(ti(de));
+                    this.p(ti(d2));
+                    this.p(ti(d1));
+                }
+            }
+            else if(d == 'DIV') {
+                let de = this.f();
+                let d1 = this.f();
+                let d2 = this.f();
+                if(r(d1) && r(d2)) {
+                    this.p(is.divrr);
+                    this.p(ti(de));
+                    this.p(ti(d1));
+                    this.p(ti(d2));
+                } else if(r(d1) && !r(d2)) {
+                    this.p(is.divrl);
+                    this.p(ti(de));
+                    this.p(ti(d1));
+                    this.p(ti(d2));
+                } else if(!r(d1) && r(d2)) {
+                    this.p(is.divlr);
+                    this.p(ti(de));
+                    this.p(ti(d1));
+                    this.p(ti(d2));
+                }
+            }
+            else if(d == 'MOD') {
+                let de = this.f();
+                let d1 = this.f();
+                let d2 = this.f();
+                if(r(d1) && r(d2)) {
+                    this.p(is.modrr);
+                    this.p(ti(de));
+                    this.p(ti(d1));
+                    this.p(ti(d2));
+                } else if(r(d1) && !r(d2)) {
+                    this.p(is.modrl);
+                    this.p(ti(de));
+                    this.p(ti(d1));
+                    this.p(ti(d2));
+                } else if(!r(d1) && r(d2)) {
+                    this.p(is.modlr);
+                    this.p(ti(de));
+                    this.p(ti(d1));
                     this.p(ti(d2));
                 }
             }
