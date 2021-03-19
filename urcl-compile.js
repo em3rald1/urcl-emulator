@@ -675,6 +675,36 @@ class Compiler {
                     this.p(ti(d1));
                 }
             }
+            else if(d == 'BOD') {
+                // if odd
+                let de = this.f();
+                let r_ = this.f();
+                if(!r(de) && r(r_)) {
+                    this.p(is.bodl);
+                    this.p(ti(de));
+                    this.p(ti(r_));
+                }
+                else if(r(de) && r(r_)) {
+                    this.p(is.bodr);
+                    this.p(ti(de));
+                    this.p(ti(r_));
+                }
+            }
+            else if(d == 'BEV') {
+                // if even
+                let de = this.f();
+                let r_ = this.f();
+                if(!r(de) && r(r_)) {
+                    this.p(is.bevl);
+                    this.p(ti(de));
+                    this.p(ti(r_));
+                }
+                else if(r(de) && r(r_)) {
+                    this.p(is.bevr);
+                    this.p(ti(de));
+                    this.p(ti(r_));
+                }
+            }
             else if(d == 'PSH') {
                 let de = this.f();
                 if(r(de)) {
